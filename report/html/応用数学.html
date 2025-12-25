@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>応用数学レポート</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+b,strong{font-weight:bold}
+abbr{font-size:.9em}
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+dfn{font-style:italic}
+hr{height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type=checkbox],input[type=radio]{padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,::before,::after{box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details{margin-left:1.25rem}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock pre>code{display:block}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
+ul.checklist>li>p:first-child{margin-left:-1em}
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]{border-bottom:1px dotted}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1>応用数学レポート</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_第1章_線形代数">第1章 線形代数</a>
+<ul class="sectlevel2">
+<li><a href="#_基礎">基礎</a></li>
+<li><a href="#_行列の計算">行列の計算</a></li>
+<li><a href="#_固有値固有ベクトル">固有値・固有ベクトル</a></li>
+<li><a href="#_固有値分解">固有値分解</a></li>
+<li><a href="#_特異値と特異ベクトル">特異値と特異ベクトル</a></li>
+<li><a href="#_特異値分解">特異値分解</a></li>
+</ul>
+</li>
+<li><a href="#_第2章_確率統計">第2章 確率・統計</a>
+<ul class="sectlevel2">
+<li><a href="#_基礎_2">基礎</a></li>
+<li><a href="#_条件付き確率と同時確率">条件付き確率と同時確率</a></li>
+<li><a href="#_ベイズの法則">ベイズの法則</a></li>
+<li><a href="#_確率変数と確率分布">確率変数と確率分布</a></li>
+<li><a href="#_分散共分散標準偏差">分散・共分散・標準偏差</a></li>
+<li><a href="#_様々な確率分布">様々な確率分布</a></li>
+<li><a href="#_推定">推定</a></li>
+</ul>
+</li>
+<li><a href="#_第3章_情報理論">第3章 情報理論</a>
+<ul class="sectlevel2">
+<li><a href="#_自己情報量">自己情報量</a></li>
+<li><a href="#_シャノンエントロピー">シャノンエントロピー</a></li>
+<li><a href="#_klダイバージェンスカルバックライブラーダイバージェンス">KLダイバージェンス(カルバックライブラーダイバージェンス)</a></li>
+<li><a href="#_交差エントロピー">交差エントロピー</a></li>
+</ul>
+</li>
+<li><a href="#_参考資料">参考資料</a>
+<ul class="sectlevel2">
+<li><a href="#_第1章_線形代数_2">第1章 線形代数</a></li>
+<li><a href="#_第2章_確率統計_2">第2章 確率・統計</a></li>
+<li><a href="#_第3章_情報理論_2">第3章 情報理論</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_第1章_線形代数">第1章 線形代数</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_基礎">基礎</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>行列は数を表形式に並べたものスカラーは単なる数</p>
+</li>
+<li>
+<p>連立方程式の解法に応用可能（加減法や逆行列を用いる）</p>
+</li>
+<li>
+<p>逆行列は存在しない場合もあるA×B = 単位行列となる B が逆行列</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_行列の計算">行列の計算</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">行列の加法</dt>
+</dl>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{bmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{bmatrix}
++
+\begin{bmatrix}
+5 &amp; 6 \\
+7 &amp; 8
+\end{bmatrix}
+=
+\begin{bmatrix}
+6 &amp; 8 \\
+10 &amp; 12
+\end{bmatrix}\]
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">行列のスカラー倍</dt>
+</dl>
+</div>
+<div class="stemblock">
+<div class="content">
+\[2 \cdot
+\begin{bmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{bmatrix}
+=
+\begin{bmatrix}
+2 &amp; 4 \\
+6 &amp; 8
+\end{bmatrix}\]
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">行列の積</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>行列の積 \(AB\) は「行と列の内積」で定義</p>
+</li>
+<li>
+<p>条件：A が m×n、B が n×p のとき、積 AB は m×p</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{bmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{bmatrix}
+\begin{bmatrix}
+5 &amp; 6 \\
+7 &amp; 8
+\end{bmatrix}
+=
+\begin{bmatrix}
+19 &amp; 22 \\
+43 &amp; 50
+\end{bmatrix}\]
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">単位行列と逆行列</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>単位行列 \(I\) は「かけても変わらない行列」
+\(AI = IA = A\)</p>
+</li>
+<li>
+<p>逆行列 \(A^{-1}\) は \(AA^{-1} = A^{-1}A = I\) を満たす
+存在条件は det(A) ≠ 0</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="stemblock">
+<div class="content">
+\[A^{-1} = \frac{1}{ad - bc}
+\begin{bmatrix}
+d &amp; -b \\
+- c &amp; a
+\end{bmatrix}\]
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">行列式</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>正方行列のみ定義される</p>
+</li>
+<li>
+<p>逆行列の存在条件に関わる（行列式が 0 でないときに逆行列が存在）</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\left| \begin{matrix}
+a &amp; b \\
+c &amp; d
+\end{matrix} \right|
+= ad - bc\]
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_固有値固有ベクトル">固有値・固有ベクトル</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">定義</dt>
+<dd>
+<p>正方行列\(A\)に対して、以下の式が成立するような<br>
+スカラー値\(\lambda\)を<strong>固有値</strong>、非ゼロベクトル\(v\)を<strong>固有ベクトル</strong> という</p>
+</dd>
+</dl>
+</div>
+<div class="stemblock">
+<div class="content">
+\[A v = \lambda v\]
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">性質</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>固有値は行列\(A\)の次元分存在する</p>
+</li>
+<li>
+<p>固有値\(\lambda\)は「行列の伸縮率」を表す</p>
+</li>
+<li>
+<p>固有ベクトル\(v\)は「その伸縮方向」を表す</p>
+</li>
+<li>
+<p>異なる固有値に対応する固有ベクトルは線形独立</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_固有値分解">固有値分解</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">定義</dt>
+<dd>
+<p>正方行列\(A\)が固有値 \(\lambda_1, \lambda_2, ..., \lambda_n\) と固有ベクトル \(v_1, v_2, ..., v_n\) を持つとき以下のように変形することを<strong>固有値分解</strong>という</p>
+<div class="stemblock">
+<div class="content">
+\[A = V \Lambda V^{-1}\]
+</div>
+</div>
+<div class="paragraph">
+<p>ただし、</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\Lambda =
+\begin{bmatrix}
+\lambda_1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; \lambda_2 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \lambda_n
+\end{bmatrix}
+\quad
+V = \begin{bmatrix}
+v_1 &amp; v_2 &amp; \cdots &amp; v_n
+\end{bmatrix}\]
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>行列の累乗や指数計算を効率化できる</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">具体例</dt>
+<dd>
+<p>正方行列Aが\(
+\quad
+A = \begin{bmatrix}
+4 &amp; 1 \\
+2 &amp; 3
+\end{bmatrix}
+\quad
+\)のとき、</p>
+<div class="paragraph">
+<p>固有値は \(\lambda = 5, 2\quad\)  固有ベクトルは
+\(\quad
+v_1 = \begin{bmatrix}1 \\ 1\end{bmatrix},\quad
+v_2 = \begin{bmatrix}1 \\ -2\end{bmatrix}
+\)</p>
+</div>
+<div class="paragraph">
+<p>固有値分解の一般形 \(A = V \Lambda V^{-1}\) より、
+\(
+V = \begin{bmatrix}
+1 &amp; 1 \\
+1 &amp; -2
+\end{bmatrix}, \quad
+\Lambda = \begin{bmatrix}
+5 &amp; 0 \\
+0 &amp; 2
+\end{bmatrix}
+\)</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_特異値と特異ベクトル">特異値と特異ベクトル</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">定義</dt>
+<dd>
+<p>任意のゼロ行列ではない\(m × n\)行列Aに対して、以下の式が成立するような<br>
+正の数\(\sigma\)を<strong>特異値</strong>、m次元ベクトル\(u\)を<strong>左特異ベクトル</strong>、n次元ベクトル\(v\)を<strong>右特異ベクトル</strong>という</p>
+<div class="stemblock">
+<div class="content">
+\[Av = σu,
+\quad
+A^Tu = σv\]
+</div>
+</div>
+<div class="paragraph">
+<p>ただし、\(u, v\)はともにゼロベクトルではないことが前提となる</p>
+</div>
+</dd>
+<dt class="hdlist1">計算手順</dt>
+<dd>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>\(A^TA\) の固有値を求める</p>
+</li>
+<li>
+<p>その平方根を特異値とする</p>
+</li>
+<li>
+<p>固有ベクトルから右特異ベクトル \(v\) を構成</p>
+</li>
+<li>
+<p>左特異ベクトル \(u は Av_i = σ_i u_i\) から求める</p>
+</li>
+</ol>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_特異値分解">特異値分解</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">定義</dt>
+<dd>
+<p>行列Aに対して、特異値と特異ベクトルを持つ場合に以下の式で特異値分解できる</p>
+<div class="stemblock">
+<div class="content">
+\[A = U \Sigma V^{T}\]
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>U：m×m の直交行列 （列ベクトルは左特異ベクトル） \(\quad U = \begin{bmatrix}u_1 \quad u_2 \quad ... \quad u_r \end{bmatrix}\)</p>
+</li>
+<li>
+<p>V：n×n の直交行列 （列ベクトルは右特異ベクトル） \(\quad V = \begin{bmatrix}v_1 \quad v_2 \quad ... \quad v_r \end{bmatrix}\)</p>
+</li>
+<li>
+<p>Σ：m×n の対角行列（対角成分は特異値、非負で降順に並ぶ）
+\(
+\Sigma =
+\begin{bmatrix}
+\sigma_1 &amp; 0        &amp; \cdots &amp; 0 \\
+0        &amp; \sigma_2 &amp; \cdots &amp; 0 \\
+\vdots   &amp; \vdots   &amp; \ddots &amp; \vdots \\
+0        &amp; 0        &amp; \cdots &amp; \sigma_r
+\end{bmatrix}
+\)</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">固有値分解との違い</dt>
+</dl>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">項目</th>
+<th class="tableblock halign-left valign-top">固有値分解</th>
+<th class="tableblock halign-left valign-top">特異値分解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">適用範囲</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">正方行列のみ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">任意の m×n 行列</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">値の性質</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">固有値は負もあり得る</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">特異値は常に非負</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">幾何学的意味</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">固有ベクトル方向の伸縮率</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">入力→出力の回転＋伸縮＋回転</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">主な応用</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">安定性解析、PCA基礎</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次元削減、画像圧縮、推薦システム</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_第2章_確率統計">第2章 確率・統計</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_基礎_2">基礎</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">集合</dt>
+<dd>
+<p>要素の集まり</p>
+<div class="paragraph">
+<p>集合 \(S\) に含まれる要素は次のように表す：</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[S = \{a, b, c, d, e, f, g\}, \quad a \in S (a が集合 S の要素である)\]
+</div>
+</div>
+<div class="paragraph">
+<p>集合 \(S\) の内部に集合 \(M\) がある場合は次のように表す：</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[M = \{c, d, g\}, \quad M \subset S (集合 M が集合 S の部分集合)\]
+</div>
+</div>
+</dd>
+<dt class="hdlist1">確率</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>頻度確率（客観確率）：発生する頻度、誰が計算しても同じ値</p>
+</li>
+<li>
+<p>ベイズ確率（主観確率）：人の信念や判断の度合い、人によって異なる値（火星人がいる確率）</p>
+<div class="stemblock">
+<div class="content">
+\[P(A) = \frac{n(A)}{n(U)} = \frac{事象Aが起こる数}{すべての事象の数}\]
+</div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_条件付き確率と同時確率">条件付き確率と同時確率</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">条件付き確率</dt>
+<dd>
+<p>\(ある事象 B が起きた条件下で A となる確率\)<br>
+\(⇒すでに事象B\)が起きた世界に限定(<strong>条件付き</strong>)して考えるため、\(AとBが同時に起こる確率 P(A \cap B)\)より確率が高くなる</p>
+</dd>
+</dl>
+</div>
+<div class="stemblock">
+<div class="content">
+\[P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{P(A \cap B)}{n(B)}\]
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">同時確率</dt>
+<dd>
+<p>お互いの発生には因果関係のない事象Aと事象Bが同時に発生する確率</p>
+</dd>
+</dl>
+</div>
+<div class="stemblock">
+<div class="content">
+\[P(A \cap B) = P(A)P(B|A) = P(A)P(B) = P(B \cap A)\]
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ベイズの法則">ベイズの法則</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>事後確率を求める基本公式</p>
+</li>
+<li>
+<p>機械学習の推論に不可欠</p>
+</li>
+</ul>
+</div>
+<div class="stemblock">
+<div class="content">
+\[P(A|B) = \frac{P(B|A)P(A)}{P(B)}\]
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_確率変数と確率分布">確率変数と確率分布</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">確率変数</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>確率的に値が決まる変数</p>
+</li>
+<li>
+<p>サイコロの出目、身長、気温などが例として挙げられる</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">確率分布</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>確率変数がどの値をどれくらいの確率で取るかを表すルール</p>
+</li>
+<li>
+<p>離散値では確率質量関数 \(P(X=x)\)</p>
+</li>
+<li>
+<p>連続値では確率密度関数 \(f_X(x)\)</p>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. 離散値の例（サイコロ）</caption>
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2858%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">出目 (x)</th>
+<th class="tableblock halign-left valign-top">1</th>
+<th class="tableblock halign-left valign-top">2</th>
+<th class="tableblock halign-left valign-top">3</th>
+<th class="tableblock halign-left valign-top">4</th>
+<th class="tableblock halign-left valign-top">5</th>
+<th class="tableblock halign-left valign-top">6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">確率 P(X=x)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1/6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1/6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1/6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1/6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1/6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1/6</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">確率</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>ある値や範囲が起こる割合</p>
+</li>
+<li>
+<p>確率密度そのものは確率ではない⇒積分して確率になる</p>
+<div class="stemblock">
+<div class="title">離散値の場合</div>
+<div class="content">
+\[P(X=x)\]
+</div>
+</div>
+<div class="stemblock">
+<div class="title">連続値の場合</div>
+<div class="content">
+\[P(a \le X \le b) = \int_a^b f_X(x)\, dx\]
+</div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">期待値 \(E[f(X)\)]</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>確率変数の重み付き平均</p>
+</li>
+<li>
+<p>多数回試行すると、その平均が期待値に近づく（大数の法則）</p>
+</li>
+<li>
+<p>実際に出る値とは限らない（サイコロの期待値3.5など）</p>
+<div class="stemblock">
+<div class="title">離散値の場合</div>
+<div class="content">
+\[E[X] = \sum_{k=1}^{n} x_k \, P(X = x_k)\]
+</div>
+</div>
+<div class="stemblock">
+<div class="title">連続値の場合</div>
+<div class="content">
+\[E[X] = \int_{-\infty}^{\infty} x \, f_X(x) \, dx\]
+</div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_分散共分散標準偏差">分散・共分散・標準偏差</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">分散</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>データの散らばりの平均（確率や密度を掛けているため散らばりの大きさではない）<br></p>
+</li>
+<li>
+<p>各々のデータが期待値からどれだけ離れているか<br></p>
+</li>
+<li>
+<p>期待値を基準にした平均二乗誤差</p>
+<div class="stemblock">
+<div class="content">
+\[\mathrm{Var}(X)
+= E[(X - E[X])^2]
+= E[f(X)^2] - \left( E[f(X)] \right)^2\]
+</div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">共分散</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>2つの確率変数が同じ方向に動くか、逆方向に動くかを測る量</p>
+</li>
+<li>
+<p>共分散が正：一緒に動く</p>
+</li>
+<li>
+<p>共分散が負：逆に動く</p>
+</li>
+<li>
+<p>共分散が0：関係性がない</p>
+<div class="stemblock">
+<div class="content">
+\[\mathrm{Cov}(X, Y)
+= E[(X - E[X])(Y - E[Y])]
+= E[XY] - E[X]E[Y]\]
+</div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">標準偏差</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>分散の平方根</p>
+<div class="stemblock">
+<div class="content">
+\[\mathrm{SD}(f(X))
+= \sqrt{ \mathrm{Var}(f(X)) }
+= \sqrt{ E\left[ \left( f(X) - E[f(X)] \right)^2 \right] }\]
+</div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_様々な確率分布">様々な確率分布</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">ベルヌーイ分布</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>「成功 or 失敗」など、2つの結果しかない確率変数の分布</p>
+</li>
+<li>
+<p>コインの表裏、スパムメール非スパムメールなど</p>
+<div class="stemblock">
+<div class="content">
+\[P(x \mid \mu) = \mu^x (1 - \mu)^{1 - x},\quad x \in \{0, 1\}\]
+</div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">マルチヌーイ分布</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>K個のカテゴリのうち1つが選ばれる分布</p>
+</li>
+<li>
+<p>ベルヌーイ分布の多値、K=2のマルチヌーイ分布がベルヌーイ分布となる</p>
+<div class="stemblock">
+<div class="content">
+\[P(\boldsymbol{x} \mid \boldsymbol{p}) = \prod_{i=1}^{K} p_i^{x_i}\]
+</div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">二項分布</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>ベルヌーイ試行をn回繰り返したときの成功回数の分布</p>
+<div class="stemblock">
+<div class="content">
+\[P(x \mid \lambda, n)
+= \frac{n!}{x!(n - x)!} \lambda^x (1 - \lambda)^{n - x}\]
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(x\)：成功回数（0〜n）</p>
+</li>
+<li>
+<p>\(n\)：試行回数</p>
+</li>
+<li>
+<p>\(\lambda\)：1回の試行における成功確率</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">ガウス分布</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>釣鐘型の連続分布、正規分布とも呼ばれる</p>
+</li>
+<li>
+<p>多くの自然現象が従う</p>
+<div class="stemblock">
+<div class="content">
+\[\mathcal{N}(x; \mu, \sigma^2)
+= \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)\]
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(x\)：連続値の確率変数</p>
+</li>
+<li>
+<p>\(\mu\)：平均（期待値）</p>
+</li>
+<li>
+<p>\(\sigma^2\)：分散</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_推定">推定</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">推定</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>標本から母集団の特徴（平均・分散など）を数学的に予測すること</p>
+<div class="ulist">
+<ul>
+<li>
+<p>点推定：1つの値で母数を予測する</p>
+</li>
+<li>
+<p>区間推定：ある範囲（信頼区間）で母数を予測する</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">母集団</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>本来知りたい全体（例：日本人全員の身長）</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">標本</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>実際に観測できる一部（例：100人の身長）</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">標本平均</dt>
+<dd>
+<p>サンプル数が大きくなれば母集団の値に近づく（一致性）
+サンプル数がいくらであってもその期待値は母集団の値と同様（不偏性）</p>
+</dd>
+<dt class="hdlist1">推定量と推定値</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>推定量：標本から計算される関数</p>
+</li>
+<li>
+<p>推定値：実際に得られた数値</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">標本分散</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>標本平均 \(\bar{x}\) を使って、データのばらつきを測る</p>
+</li>
+<li>
+<p>分母が \(n\) なので、母分散の推定としては過小評価になる傾向がある</p>
+</li>
+<li>
+<p>「標本分散」と呼ばれるが、母分散の不偏推定量ではない</p>
+<div class="stemblock">
+<div class="content">
+\[\hat{\sigma}^2 = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2\]
+</div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">不偏分散</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>分母が \(n - 1\) になっているのが特徴、自由度の補正による</p>
+</li>
+<li>
+<p>この補正により、母分散の不偏推定量になる</p>
+</li>
+<li>
+<p>統計学ではこちらを「標本分散」と呼ぶこともあるが、厳密には「不偏分散」</p>
+<div class="stemblock">
+<div class="content">
+\[s^2 = \frac{1}{n - 1} \sum_{i=1}^{n} (x_i - \bar{x})^2\]
+</div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_第3章_情報理論">第3章 情報理論</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_自己情報量">自己情報量</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>確率変数がとる一つの結果がどれだけ<strong>意外か</strong>を数値化したもの</p>
+</li>
+<li>
+<p>確率が低い事象ほど情報量が大きい</p>
+</li>
+<li>
+<p>確率1の事象の情報量は0 \(I = - \log 1 = 0\)</p>
+</li>
+<li>
+<p>対数の底が2のとき、単位はビット</p>
+</li>
+<li>
+<p>対数の底がネイピアの\(e\)のとき、単位はnat</p>
+<div class="stemblock">
+<div class="content">
+\[I(x) = -\log P(x) = \log W(x)\]
+</div>
+</div>
+<div class="stemblock">
+<div class="title">コイン投げと宝くじの例</div>
+<div class="content">
+\[I(\text{コイン表}) = -\ln(0.5) = 0.693 \\
+I(\text{宝くじ1等}) = -\ln(10^{-7}) = 16.1\]
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_シャノンエントロピー">シャノンエントロピー</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>確率分布全体の<strong>平均的な意外性</strong></p>
+</li>
+<li>
+<p>自己情報量の期待値</p>
+<div class="stemblock">
+<div class="content">
+\[H(X) = E(x) = -E(\log P(x)) = -\sum_i P(x_i)\log P(x_i)\]
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_klダイバージェンスカルバックライブラーダイバージェンス">KLダイバージェンス(カルバックライブラーダイバージェンス)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>確率分布\(P\)と\(Q\)の違いを測る指標</p>
+</li>
+<li>
+<p>ある事象 \(x\) に対して、分布 \(P(x)\) と \(Q(x)\) の自己情報量の差は次のように表される</p>
+<div class="stemblock">
+<div class="content">
+\[I(Q(x)) - I(P(x))
+= (-\log Q(x)) - (-\log P(x))
+= \log \frac{P(x)}{Q(x)}\]
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(I(P(x)) = -\log P(x)\)：本来の情報量</p>
+</li>
+<li>
+<p>\(I(Q(x)) = -\log Q(x)\)：近似分布の情報量</p>
+</li>
+<li>
+<p>差分は「本来よりどれだけ余計に情報が必要か」</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>この差を全体の期待値として集約すると、KLダイバージェンスになる</p>
+<div class="stemblock">
+<div class="content">
+\[D_{\mathrm{KL}}(P \,\|\, Q)
+= \sum_x P(x) \left( -\log Q(x) \right) - \left( -\log P(x) \right)
+= \sum_x P(x) \log \frac{P(x)}{Q(x)}\]
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_交差エントロピー">交差エントロピー</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>分布 \(P(x)\) に従って生じる事象を、近似分布 \(Q(x)\) で符号化したときの<strong>平均情報量</strong>を表す</p>
+<div class="stemblock">
+<div class="content">
+\[H(P, Q) = - \sum_x P(x) \log Q(x)\]
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">期待値としての表現</dt>
+<dd>
+<div class="stemblock">
+<div class="content">
+\[H(P, Q) = -\mathbb{E}_{x \sim P} \log Q(x)\]
+</div>
+</div>
+</dd>
+<dt class="hdlist1">エントロピーとの関係</dt>
+<dd>
+<div class="stemblock">
+<div class="content">
+\[H(P, Q) = H(P) + D_{\mathrm{KL}}(P \,\|\, Q)\]
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考資料">参考資料</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_第1章_線形代数_2">第1章 線形代数</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://math-notes.info/li/">大学数学の授業ノート：線形代数</a></p>
+</li>
+<li>
+<p><a href="https://www.rimath.saitama-u.ac.jp/lab.jp/Fukui/lectures/Linear_algebra.pdf">埼玉大学「線形代数学講義ノート」</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_第2章_確率統計_2">第2章 確率・統計</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.stat.go.jp/dss/">統計数理研究所「統計WEB」</a></p>
+</li>
+<li>
+<p><a href="https://ocw.kyoto-u.ac.jp/course/809/">エレベータのブザーは鳴るか―大学生のための統計学入門</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_第3章_情報理論_2">第3章 情報理論</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www-int.ist.osaka-u.ac.jp/user/watanabe/">大阪大学「情報理論・符号理論の基礎」</a></p>
+</li>
+<li>
+<p><a href="https://sites.google.com/view/toyoakinishida-j/%E6%83%85%E5%A0%B1%E7%AC%A6%E5%8F%B7%E7%90%86%E8%AB%96">情報符号理論</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2025-12-22 08:28:11 +0900
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
