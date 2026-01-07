@@ -4,3 +4,8 @@
 
 // リスト終了を明示 
 [none]
+
+
+## pdf化
+asciidoctor 2_ML.adoc
+explorer.exe .

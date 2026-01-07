@@ -3,7 +3,7 @@
 
 = 機械学習レポート
 
-== 第1章 機械学習の課題
+== 機械学習の課題
 
 === 機械学習とは
 様々なデータに潜むルールやパターンを学習し、未知のデータを予測・分析する +
@@ -79,7 +79,7 @@
 | 無し
 |===
 
-== 第2章 性能指標
+== 性能指標
 === 性能指標まとめ
 [cols="1,2,2,2", options="header"]
 |===
@@ -294,7 +294,7 @@ R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}
 ・0以下になることもある（平均予測より悪い場合）
 |===
 
-== 第3章 線形回帰モデル
+== 線形回帰モデル
 === 回帰とは
 線形::
 * n次元空間における超平面の方程式
@@ -596,8 +596,272 @@ X_* \cdot (X^T X)^{-1} X^T
 * 元のデータセットにない値を使っていないか
 * ドメイン知識に基づいて予測結果を確認する
 
+== ロジスティック回帰モデル
 
-== 第4章 非線形回帰モデル
+=== 分類問題とは
+
+入力ベクトル stem:[x \in \mathbb{R}^m] に対して、離散的なクラスラベル stem:[y] を予測する問題 +
+
+2 クラス分類::
++
+[stem]
+++++
+y \in \{0, 1\}
+++++
++
+* stem:[x = (x_1, x_2, \ldots, x_m)^T] は説明変数（特徴量）
+* stem:[y] は目的変数（教師ラベル）
+* 教師データ集合は次のように表される
+
+[stem]
+++++
+\mathcal{D} = \{ (x_i, y_i) \mid i = 1, \ldots, n \}
+++++
+
+目的::
+未知の入力 stem:[x] に対して、そのクラス stem:[y] を正しく推定すること
+
+=== 分類問題におけるモデルの考え方
+
+識別的アプローチ::
+* 条件付き確率 stem:[p(C_k \mid x)] を直接モデル化する 
+* 代表モデル：ロジスティック回帰、SVM、ニューラルネットワーク
+* 特徴：分類精度が高く実用的、外れ値検出やデータ生成には不向き
+
+生成的アプローチ::
+* クラスごとの事前確率 stem:[p(C_k)] と条件付き分布 stem:[p(x \mid C_k)] をモデル化 
+* ベイズの定理を用いて stem:[p(C_k \mid x)] を計算 
++ 
+[stem] 
+++++ 
+p(C_k \mid x) = \frac{p(x \mid C_k) \cdot p(C_k)}{p(x)} 
+++++
++
+* 代表モデル：GAN、ナイーブベイズ
+* 特徴：外れ値検出が可能、データ生成が可能、少量データでも強い
+
+
+=== ロジスティック回帰モデル
+
+ロジスティック回帰モデルとは::
+* 分類問題を解くための教師あり機械学習モデル
+* 入力とstem:[m]次元パラメータの線形結合をシグモイド関数へ入力 +
+stem:[\hat{y} = \mathbf{w}^T \mathbf{x} + w_0 = \sum_{j=1}^{m} w_j x_j + w_0]
++
+* 出力はstem:[y = 1]になる確率の値
+
+// リスト終了を明示 
+[none]
+
+シグモイド関数::
++
+[stem] 
+++++ 
+\sigma(x) = \frac{1}{1 + \exp(-a x)} 
+++++
++
+* 入力は実数・出力は必ず0〜1の値
+* クラス1に分類される確率を表現
+* 単調増加関数
+* パラメータaが変わるとシグモイド関数の形が変わる
+* 傾きが急になるほどステップ関数に近づく
+
+.パラメータaを変化させたときのシグモイド関数
+image::image/ML_sigmoid.png[width=600,align=center]
+
+シグモイド関数の性質::
+* シグモイド関数の微分は、シグモイド関数自身で表現可能
+* 尤度関数の微分の際にこの事実を利用すると計算が容易
+* 微分展開
++
+stem:[a(z) = \frac{1}{1 + \exp(-z)} = \{1 + \exp(-z)\}^{-1}]
++
+stem:[
+\rightarrow 
+\frac{\partial a(z)}{\partial z} = -1 \cdot \underbrace{\left\{1 + \exp(-z)\right\}^{-2}}_{\text{-1乗の微分}} \cdot \underbrace{\exp(-z)}_{\text{expの微分}} \cdot \underbrace{(-1)}_{\text{-zの微分}}
+]
++
+stem:[
+\quad \quad \quad \quad
+=
+\underbrace{\frac{1}{1 + \exp(-z)}}_{\text{シグモイド関数 } \sigma(z)}
+\times \underbrace{\frac{\exp(-z)}{1 + \exp(-z)}}_{\text{分母の微分項}}
+]
++
+stem:[
+\quad \quad \quad \quad
+= a(z) \cdot (1 - a(z))
+]
+
+まとめ::
+* シグモイド関数の出力を「Y=1になる確率」として解釈する 
+* 説明変数の線形結合をシグモイド関数に通して確率化する 
+* クラス判定には基準値（通常 0.5）を用いる
++
+[stem] 
+++++ 
+P(Y = 1 \mid x) = \sigma\left( \underbrace{w_0}_{\text{切片}} + \underbrace{w_1}_{\text{回帰係数}} \cdot \underbrace{x_1}_{\text{説明変数}} \right) 
+++++
+
+
+=== 最尤推定
+
+最尤推定とは::
+* 観測されたデータが**尤もらしくなる**ように、モデルのパラメータを選択する方法
+* ロジスティック回帰では、ベルヌーイ分布の尤度に代入して、その尤度が最大になるようにパラメータを選択している=最尤推定をしている
+* データ→分布を考える
+
+// リスト終了を明示 
+[none]
+
+様々な確率分布::
+* 正規分布、t分布、ガンマ分布など
+* ロジスティック回帰モデルではベルヌーイ分布を利用
+
+ベルヌーイ分布::
+* 2値を扱う確率分布
++
+[stem] 
+++++ 
+P(Y = y) = p^{y} (1 - p)^{1 - y}, \quad y \in \{0, 1\} 
+++++
++
+** stem:[y = 1]のときstem:[p]
+** stem:[y = 0]のときstem:[1 - p]
++
+* stem:[y_1 ～ y_n]のデータが与えられた時の尤度関数 
++
+[stem] 
+++++ 
+\underbrace{P(y_1, y_2, \cdots, y_n; p)}_{既知} = \prod_{i=1}^{n} {\underbrace{p}_{未知}}^{\overbrace{y_i}^{既知}} (1 - \underbrace{p}_{未知})^{1 - \overbrace{y_i}^{既知}} \\
+++++
+
+ロジスティック回帰モデルの最尤推定::
+* 確率stem:[p]はシグモイド関数となるため、推定するパラメータは重みパラメータとなる
+* stem:[(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)]を生成するに至った尤もらしいパラメータを探す
++
+[stem] 
+++++ 
+P(Y = y_1 \mid x_1) = p_1^{y_1} (1 - p_1)^{1 - y_1} = \sigma(w^\top x_1)^{y_1} (1 - \sigma(w^\top x_1))^{1 - y_1} 
+++++ 
++
+[stem] 
+++++ 
+P(Y = y_2 \mid x_2) = p_2^{y_2} (1 - p_2)^{1 - y_2} = \sigma(w^\top x_2)^{y_2} (1 - \sigma(w^\top x_2))^{1 - y_2} 
+++++ 
++
+[stem] 
+++++ 
+\vdots 
+++++ 
++
+[stem] 
+++++ 
+P(Y = y_n \mid x_n) = p_n^{y_n} (1 - p_n)^{1 - y_n} = \sigma(w^\top x_n)^{y_n} (1 - \sigma(w^\top x_n))^{1 - y_n} 
+++++
++
+* 尤度関数Lを最大とするパラメータを探索する 
++
+[stem] 
+++++ 
+P(y_1, y_2, \cdots, y_n \mid w_0, w_1, \cdots, w_m) = \prod_{i=1}^{n} p_i^{y_i} (1 - p_i)^{1 - y_i} = \prod_{i=1}^{n} \sigma(w^\top x_i)^{y_i} (1 - \sigma(w^\top x_i))^{1 - y_i} = L(w) 
+++++
++
+** 対数を取ると微分の計算が簡単になる
+** 桁落ちを防ぐために、対数をつける
+** 対数尤度関数が最大になる点と尤度関数が最大になる点は同じ
+** 尤度関数にマイナスを掛けたものを最小化し、最小二乗法の最小化と合わせる
++
+[stem] 
+++++ 
+E(w_0, w_1, \cdots, w_m) = -\log L(w_0, w_1, \cdots, w_m) = -\sum_{i=1}^{n} \log P(y_i \mid x_i) 
+++++
+
+=== 勾配降下法
+* 反復学習によりパラメータを逐次的に更新する最適化手法の一つ 
+* 学習率 η はハイパーパラメータで、収束速度や安定性に影響する 
+* ロジスティック回帰など解析的に解けないモデルに必須
++ 
+[stem] 
+++++ 
+w^{(k+1)} = w^{(k)} - \eta \frac{\partial E(w)}{\partial w} 
+++++
++
+* 勾配=0でパラメータ更新がされなくなる
++
+[stem] 
+++++ 
+\mathbf{w}^{(k+1)} = \mathbf{w}^{(k)} + \eta \sum_{i=1}^{n} (y_i - p_i) \mathbf{x}_i 
+++++
++
+* 問題点
+** データ数 \(n\) が巨大な場合、メモリに全データを載せられない、勾配計算に時間がかかる（毎回全データを走査）
+* 対策
+** 確率的勾配降下法（SGD）を利用することで、**1データずつ更新**することで計算量とメモリ負荷を軽減できる
+*** データを1つずつランダムに選んでパラメータを更新
+*** 勾配降下法でパラメータを1回更新するのと同じ計算量でパラメータをn回更新
+
+=== ハンズオン
+課題::
+titanicデータセットを利用して生死の分類を行う
+
+方法::
+.googleドライブをマウントする
+----
+from google.colab import drive
+drive.mount('/content/drive')
+----
+
+.モジュールとデータのインポート
+----
+import pandas as pd
+from pandas import DataFrame
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline
+
+titanic_df = pd.read_csv('/content/drive/My Drive/study_ai_ml/data/titanic_train.csv')
+----
+
+.予測に不要と考えるカラムをドロップ
+----
+titanic_df.drop(['PassengerId', 'Name', 'Ticket', 'Cabin'], axis=1, inplace=True)
+----
+image::image/ML_logistic_1.png[width=400,align=center]
+
+.nullを含んでいる行を表示
+----
+titanic_df[titanic_df.isnull().any(axis=1)].head(10)
+----
+image::image/ML_logistic_2.png[width=400,align=center]
+
+.Ageカラムのnullを中央値で補完し、再表示
+----
+titanic_df['AgeFill'] = titanic_df['Age'].fillna(titanic_df['Age'].mean())
+titanic_df[titanic_df.isnull().any(axis=1)]
+----
+image::image/ML_logistic_3.png[width=400,align=center]
+
+.チケット価格から生死を判別
+----
+data1 = titanic_df.loc[:, ["Fare"]].values
+label1 =  titanic_df.loc[:,["Survived"]].values
+
+from sklearn.linear_model import LogisticRegression
+model=LogisticRegression()
+model.fit(data1, label1)
+
+model.predict([[61]])
+model.predict_proba([[62]])
+----
+image::image/ML_logistic_4.png[width=200,align=center]
+
+
+考察::
+金額が62以上が50%を超える境界線ということがわかる
+
+== 非線形回帰モデル
 
 === 非線形回帰モデルとは
 
@@ -904,34 +1168,213 @@ X = \begin{pmatrix}
 ** 複数のハイパーパラメータ候補を「格子状（グリッド）」に並べ、 **すべての組み合わせを総当たりで試す方法** 
 ** 正則化パラメータ stem:[\gamma]、基底関数の数、学習率などの最適値を探索する
 
-== 第5章 ロジスティック回帰モデル
-=== 分類問題とは
-入力ベクトル stem:[x \in \mathbb{R}^m] に対して、離散的なクラスラベル stem:[y] を予測する問題 +
-典型的には、2 クラス分類を考える
 
+
+== 主成分分析、k近傍法、k-means
+
+=== 主成分分析
+
+* 多変量データの持つ構造をより少数個の指標に圧縮
+** 変量の個数を減らすことに伴う情報の損失は小さく
+** 少数変数を利用した分析や可視化が実現可能
+
+学習データ::
++
+[stem] 
+++++ 
+x_i = (x_{i1}, x_{i2}, \cdots, x_{im}) \in \mathbb{R}^m 
+++++ 
+
+平均ベクトル（各特徴の平均）::
++
+[stem] 
+++++ 
+\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i 
+++++ 
+
+中心化済みデータ行列（平均を引いたデータ）::
++
+[stem] 
+++++ 
+\bar{X} = \begin{pmatrix} x_1 - \bar{x} \\ x_2 - \bar{x} \\ \vdots \\ x_n - \bar{x} \end{pmatrix} \in \mathbb{R}^{n \times m} 
+++++ 
+
+分散共分散行列（復習用）::
++
+[stem] 
+++++ 
+\Sigma = \mathrm{Var}(\bar{X}) = \frac{1}{n} \bar{X}^T \bar{X} 
+++++ 
+
+線形変換後のベクトル（主成分方向への射影）::
++
+[stem] 
+++++ 
+s_j = (s_{1j}, \cdots, s_{nj})^T = \bar{X} a_j, \quad
+++++
+
+* 係数ベクトルが変われば線形返還後の値が変化
+** 情報の量を分散の大きさと捉える
+** 線形返還後の変数の分散が最大となる射影軸を探索
+
+
+=== k近傍法
+
+* 分類問題のための機械学習手法
+** 最近傍のデータをk個とってきて、それらが最も多く所属するクラスに識別
+** kを変えると結果も変わる
+** kを大きくすると決定境界はなめらかになる
+
+
+=== k-means
+* 教師なし学習
+* クラスタリング手法
+* 与えられたデータをk個のクラスタに分類
+* 中心の初期値が変わると結果の変わりうる
+* 初期値が近いとうまくクラスタリングできないことも
+
+// リスト終了を明示 
+[none]
+
+アルゴリズム::
+* 各クラスタ中心の初期値を設定
+* 各データ点に対して、各クラスタ中心との距離を計算し、最も距離が近いクラスタを割り当てる
+* 各クラスタの平均ベクトル(中心)を計算する
+* クラスタの再割当てと中心の更新を、収束するまで繰り返す
+
+== パターン認識
+
+=== k近傍法とその計算量
+
+* k近傍法は識別したいサンプルと訓練サンプル間の距離を計算し、クラス分類を行うアルゴリズム
+* **サンプル間の距離計算の計算量が課題**となる
+* いろいろな距離計算の方法や計算量を削減する工夫がなされている
+
+=== k近傍法
+
+アルゴリズム::
+* 識別したいサンプルと訓練サンプルとの距離計算を行い、近傍k個の訓練サンプルが所属するクラスに識別する
+* クラス決定には近傍k個の訓練サンプルから投票式で行われる
+
+最適な最近傍数::
+* kを大きくすると孤立した識別境界が減り、滑らかな識別面が得られる
+* kを大きくしすぎると、識別したいサンプルから離れた訓練サンプルが入力され、識別精度が下がる
+
+k近傍法の計算量::
+* 最近傍として任意に設定したk件の訓練サンプルを使用する
+* 識別したいデータと学習データで距離計算を行うため、計算量が大きい
+* 訓練サンプル数の数kに比例して計算量が増大する
+
+近似最近傍探索(計算量の削減)::
+* 空間のパーティショニングによる最適化：kd-tree
+* 値が近いものだけの距離計算を行う
+
+=== 近似最近傍探索
+
+近似最近傍探索の必要性::
+* 高次元空間では、従来の方法ですべてのデータ点との距離を計算するのはコストが高く時間がかかる
+* 高速なデータフィルタリングと精度のバランスを取ることを目指す
+
+近似最近傍探索のアプローチ::
+* Tree/Partitioning：kd木などの2分木を用いる方法
+* Graph探索：グラフ構造を用いて近傍を検索
+* Locality Sensitive Hashing：類似したデータを同じバケットに割り当てるハッシュ関数のアプローチ
+* データの量子化
+
+近似最近傍探索の用途::
+* k近傍法の距離計算
+* 情報検索
+* 画像認識
+* 音声処理
+
+=== kd-tree
+
+kd-treeとは::
+* k次元空間にある点を分類する空間分割データ構造
+* 空間内の探索に用いられる
+
+kd-treeの構築::
+* k次元空間内のデータに対して実行する
+* 1つ目の次元について、中央値などでデータ集合を分割
+* 次の次元について、同様にデータ集合を分割
+* 上記を繰り返して空間を分割する
+
+kd-treeの特徴::
+* 類似するデータを高速に探索できる
+* k近傍法における最近傍探索に利用される
+* 高次元データには適さない(次元の呪い)
+
+=== さまざまな距離計算
+
+コサイン距離::
++
 [stem]
 ++++
-y \in \{0, 1\}
+d_{\mathrm{cos}}(x, y)
+= 1 - \frac{ x \cdot y }{ \|x\| \, \|y\| }
 ++++
++
+* ベクトルの角度差（向き）
+* 文書類似度、TF-IDFベースの検索、推薦
 
-ここで、
+ユークリッド距離::
++
+[stem] 
+++++ 
+d_{\mathrm{Euclid}}(x, y) = \sqrt{ \sum_{i=1}^{n} (x_i - y_i)^2 } 
+++++
++
+* 直線距離（ピタゴラス）
+* 画像認識、クラスタリング（K-means）
 
-* stem:[x = (x_1, x_2, \ldots, x_m)^T] は説明変数（特徴量）
-* stem:[y] は目的変数（教師ラベル）
-* 教師データ集合は次のように表される
+マンハッタン距離::
++
+[stem] 
+++++ 
+d_{\mathrm{Manhattan}}(x, y) = \sum_{i=1}^{n} |x_i - y_i| 
+++++
++
+* 縦横移動距離（碁盤目）
+* 都市移動モデル、L1正則化、スパース性重視
 
+Lp距離（一般化距離）::
++
 [stem]
 ++++
-\mathcal{D} = \{ (x_i, y_i) \mid i = 1, \ldots, n \}
+d_p(x, y)
+= \left( \sum_{i=1}^{n} |x_i - y_i|^p \right)^{1/p}
 ++++
++
+* p次ノルム距離
+* p=1→マンハッタン
+* p=2→ユークリッド
+* p→∞で最大差
 
-分類問題の目的は、未知の入力 stem:[x] に対して、そのクラス stem:[y] を正しく推定することである
 
-ロジスティック回帰は、事後確率 stem:[P(y=1 \mid x)] をモデル化する識別的手法である
 
-=== 分類問題におけるモデルの考え方
-識別的アプローチ::
+マハラノビス距離::
++
+[stem]
+++++
+d_{\mathrm{Mahalanobis}}(x, \mu)
+= \sqrt{ (x - \mu)^T \Sigma^{-1} (x - \mu) }
+++++
++
+* 分散・相関を考慮した距離
+* 外れ値検出、多変量正規分布、異常検知
 
-生成的アプローチ::
 
-== 第6章 主成分分析、k近傍法、k-means
+== 参考資料
+機械学習の課題、性能指標::
+* https://www.amazon.co.jp/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92%E6%95%99%E7%A7%91%E6%9B%B8-%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0-G%E6%A4%9C%E5%AE%9A-%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%A9%E3%83%AA%E3%82%B9%E3%83%88-%E5%85%AC%E5%BC%8F%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88/dp/4798157554/ref=asc_df_4798157554?mcid=9a63e1e151ea3eafa643bf70ef9a89bd&tag=jpgo-22&linkCode=df0&hvadid=707477771413&hvpos=&hvnetw=g&hvrand=15606859331535329614&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9197718&hvtargid=pla-525639118005&psc=1&hvocijid=15606859331535329614-4798157554-&hvexpln=0[深層学習教科書 ディープラーニング G検定(ジェネラリスト) 公式テキスト]
+
+線形回帰、ロジスティック回帰::
+* https://www.nakatalab.iee.e.titech.ac.jp/text/pdf/ML/ML2.pdf?utm_source=copilot.com[東京工業大学 中田研究室「線形回帰とロジスティック回帰」]
+
+非線形回帰::
+* https://support.minitab.com/ja-jp/minitab/help-and-how-to/statistical-modeling/regression/supporting-topics/nonlinear-regression/understanding-nonlinear-regression/[非線形回帰について理解する]
+
+主成分分析、k近傍法、k-means、パターン認識::
+* https://www.ibm.com/jp-ja/think/topics/principal-component-analysis#1793360183[主成分分析（PCA）とは]
+* https://www.ibm.com/jp-ja/think/topics/knn[k近傍法（kNN）アルゴリズムとは]
+* https://www.ibm.com/jp-ja/think/topics/k-means-clustering#2142864944[k平均法とは]
